@@ -1,0 +1,63 @@
+
+
+
+
+
+
+type Author {
+  id: ID!; # unique identifier (machine-readable)
+  name: String!; # utf-8 character sequence (human-readable)
+  age: Int; # Signed 32 bit integer
+}
+
+type Book {
+  authors: Author[]!; # List of Author types
+  dateReleased: Date; # can have custom scalar types (platform dependent)
+  id: ID!;
+  isbn: String!;
+  isHardcover: Boolean!; # ! represents 'non-null'
+  title: String!;
+}
+
+# enums to restrict to a particular set of scalar values
+# note: language specific implementations
+enum Seasons {
+  SPRING
+  SUMMER
+  FALL
+  WINTER
+}
+
+# includes a set of fields that a type must include to implement the interface
+interface NetflixUser {
+  id: ID!;
+  email: String!;
+}
+
+# type system has support for union types, input types etc...
+
+
+
+# sample query (supports multiple)
+query authorAndBook {
+  book (isbn: "9780853452799") {
+    title # return the book's title
+  }
+
+  author (id: "7") {
+    name # return the author's name
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
