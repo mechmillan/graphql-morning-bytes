@@ -1,9 +1,4 @@
-
-
-
-
-
-
+# SAMPLE FILE - NOT USED -
 type Author {
   id: ID!; # unique identifier (machine-readable)
   name: String!; # utf-8 character sequence (human-readable)
