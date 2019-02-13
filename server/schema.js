@@ -62,6 +62,7 @@ const QuoteType = new GraphQLObjectType({
 // which takes a configuration object
 module.exports = new GraphQLSchema({
   // root query operation
+  // STEP 2, 3, 4: define queries, mutations, subscriptions
   query: new GraphQLObjectType({
     name: "Query",
     description: "Query for information about a company, by symbol",

@@ -35,6 +35,7 @@ app.get("/", (req, res, next) => {
 app.use(
   GRAPHQL_ENDPOINT,
   graphqlHTTP(req => {
+    // STEP 5: define your resolvers
     // batch loading functions
     // accepting an array of keys and returning
     // promises that resolve to an array of values
