@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const DataLoader = require("dataloader"); // batching & caching
 const IEXApi = require("./IEXApi");
@@ -13,6 +14,17 @@ const GRAPHQL_ENDPOINT = "/graphql";
 
 // configure logging middleware
 app.use(logger);
+
+// enable cors for client on localhost
+let whitelist = ["http://localhost:3000"];
+let corsOptions = {
+  origin: (origin, callback) => {
+    let originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, originIsWhitelisted);
+  },
+  credentials: true
+};
+app.use(cors(corsOptions));
 
 // simplification: redirect index to /graphql
 app.get("/", (req, res, next) => {
